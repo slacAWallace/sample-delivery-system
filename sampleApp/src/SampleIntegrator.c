@@ -76,7 +76,9 @@ long subSampleIntegratorProcess(aSubRecord *pgsub)
 
 		if(ACCUM_DEBUG >= 2) errlogPrintf("Time difference: %f\n", (double)difftime(curr_time, epoch_time));
 		if(ACCUM_DEBUG >= 2) errlogPrintf("Increment: %f\n", increment);
-		accumulators[selector] += increment;
+		if(selector > 0 && selector < 9){
+			accumulators[selector] += increment;
+		}
 		if(ACCUM_DEBUG >= 2) errlogPrintf("Accumulator Value: %f\n", accumulators[selector]);
 	}
 
